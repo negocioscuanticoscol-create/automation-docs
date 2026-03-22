@@ -16,6 +16,7 @@
     --green: #34d399;
     --yellow: #fbbf24;
     --red: #f87171;
+    --teal: #2dd4bf;
     --text: #e8eaf0;
     --muted: #6b7280;
     --tag-bg: #1e2333;
@@ -32,10 +33,7 @@
     padding: 48px 24px 80px;
   }
 
-  .page {
-    max-width: 860px;
-    margin: 0 auto;
-  }
+  .page { max-width: 900px; margin: 0 auto; }
 
   /* Header */
   .header {
@@ -62,9 +60,14 @@
     margin-bottom: 16px;
   }
 
-  .header h1 em {
-    font-style: italic;
-    color: var(--accent2);
+  .header h1 em { font-style: italic; color: var(--accent2); }
+
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+    align-items: center;
   }
 
   .security-badge {
@@ -77,7 +80,6 @@
     padding: 8px 14px;
     font-size: 12px;
     color: var(--accent2);
-    margin-top: 8px;
   }
 
   .security-badge .dot {
@@ -87,17 +89,49 @@
     animation: pulse 2s infinite;
   }
 
+  .version-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #0d1a10;
+    border: 1px solid #1a4020;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 12px;
+    color: var(--green);
+  }
+
+  /* New tool highlight banner */
+  .new-banner {
+    background: linear-gradient(90deg, #0d1525 0%, #111827 100%);
+    border: 1px solid #1e3a5f;
+    border-left: 3px solid var(--teal);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 48px;
+    font-size: 12px;
+    color: #94a3b8;
+    animation: fadeUp 0.5s ease both;
+    animation-delay: 0.05s;
+  }
+
+  .new-banner strong { color: var(--teal); }
+  .new-banner a { color: var(--accent); text-decoration: none; }
+  .new-banner a:hover { text-decoration: underline; }
+
   /* Sections */
   .section {
     margin-bottom: 48px;
     animation: fadeUp 0.6s ease both;
   }
 
-  .section:nth-child(2) { animation-delay: 0.1s; }
-  .section:nth-child(3) { animation-delay: 0.2s; }
-  .section:nth-child(4) { animation-delay: 0.3s; }
-  .section:nth-child(5) { animation-delay: 0.4s; }
-  .section:nth-child(6) { animation-delay: 0.5s; }
+  .section:nth-child(3) { animation-delay: 0.1s; }
+  .section:nth-child(4) { animation-delay: 0.15s; }
+  .section:nth-child(5) { animation-delay: 0.2s; }
+  .section:nth-child(6) { animation-delay: 0.25s; }
+  .section:nth-child(7) { animation-delay: 0.3s; }
+  .section:nth-child(8) { animation-delay: 0.35s; }
+  .section:nth-child(9) { animation-delay: 0.4s; }
 
   .section-header {
     display: flex;
@@ -115,6 +149,7 @@
     background: var(--surface2);
     border-radius: 8px;
     border: 1px solid var(--border);
+    flex-shrink: 0;
   }
 
   .section-title {
@@ -124,11 +159,18 @@
     color: var(--text);
   }
 
+  .section-desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
   .section-num {
     margin-left: auto;
     font-size: 11px;
     color: var(--muted);
     letter-spacing: 0.1em;
+    flex-shrink: 0;
   }
 
   /* Cards grid */
@@ -165,11 +207,41 @@
 
   .card:hover::before { opacity: 1; }
 
+  /* NEW card variant */
+  .card.card-new {
+    border-color: #1a3a4a;
+    background: #0d1820;
+  }
+
+  .card.card-new::before {
+    background: linear-gradient(90deg, var(--teal), var(--accent));
+  }
+
+  .card.card-new:hover { border-color: var(--teal); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
   .card-name {
     font-size: 15px;
     font-weight: 500;
     color: var(--text);
-    margin-bottom: 6px;
+  }
+
+  .new-pill {
+    font-size: 10px;
+    font-weight: 500;
+    background: #0a2a20;
+    color: var(--teal);
+    border: 1px solid #1a5040;
+    border-radius: 4px;
+    padding: 2px 7px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
   .card-desc {
@@ -202,6 +274,7 @@
     gap: 8px;
     font-size: 11px;
     margin-top: 8px;
+    flex-wrap: wrap;
   }
 
   .badge {
@@ -232,15 +305,46 @@
     border: 1px solid #104030;
   }
 
-  /* Divider */
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
-    margin: 8px 0 20px;
-    opacity: 0.3;
+  .badge-active {
+    background: #0a1f15;
+    color: var(--green);
+    border: 1px solid #104030;
   }
 
-  /* Footer note */
+  .badge-new {
+    background: #0a2530;
+    color: var(--teal);
+    border: 1px solid #1a5060;
+  }
+
+  .badge-future {
+    background: #1a1030;
+    color: #818cf8;
+    border: 1px solid #2e2060;
+  }
+
+  .cost-tag {
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+
+  /* MCP explanation box */
+  .mcp-box {
+    background: #0d1820;
+    border: 1px solid #1a3a4a;
+    border-left: 3px solid var(--teal);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+
+  .mcp-box strong { color: var(--teal); }
+
+  /* Footer */
   .footer-note {
     margin-top: 56px;
     padding: 16px 20px;
@@ -256,21 +360,16 @@
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes pulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+    50%       { opacity: 0.3; }
   }
 
-  /* Wide card variant */
-  .cards.wide { grid-template-columns: 1fr; }
-  .cards.wide .card { display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start; }
-  .cards.wide .card-name { font-size: 14px; }
-
   @media (max-width: 600px) {
-    .cards.wide .card { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -279,12 +378,22 @@
 
   <!-- Header -->
   <div class="header">
-    <div class="header-label">Documentación interna · v1.0</div>
+    <div class="header-label">Documentación interna · v2.0 · Actualizado marzo 2026</div>
     <h1>Guía de Herramientas<br><em>y Accesos del Sistema</em></h1>
-    <div class="security-badge">
-      <span class="dot"></span>
-      Credenciales gestionadas en Bitwarden · Este documento NO contiene contraseñas
+    <div class="header-meta">
+      <div class="security-badge">
+        <span class="dot"></span>
+        Credenciales gestionadas en Bitwarden · Este documento NO contiene contraseñas
+      </div>
+      <div class="version-badge">
+        ✦ v2.0 — Claude Code + MCP agregado
+      </div>
     </div>
+  </div>
+
+  <!-- New tools banner -->
+  <div class="new-banner">
+    <strong>Novedades v2.0 →</strong> Se agregaron <strong>Claude Code + MCP</strong> como constructor inteligente de flujos n8n, <strong>WATI</strong> como WhatsApp Business API oficial (compatible iOS + Android), y <strong>awesome-n8n-templates</strong> como repositorio de flujos listos para reutilizar. Se eliminó la dependencia de configuración manual nodo a nodo en n8n.
   </div>
 
   <!-- 1. Infraestructura -->
@@ -294,47 +403,48 @@
       <span class="section-title">Infraestructura</span>
       <span class="section-num">01</span>
     </div>
-    <p style="font-size:12px;color:var(--muted);margin-bottom:16px;">Herramientas que soportan la base técnica del sistema.</p>
+    <p class="section-desc">Base técnica del sistema. El servidor corre en Brasil para garantizar baja latencia en Colombia y LATAM.</p>
     <div class="cards">
 
       <div class="card">
-        <div class="card-name">Docker</div>
-        <div class="card-desc">Ejecuta servicios en contenedores aislados.</div>
+        <div class="card-header">
+          <div class="card-name">VPS · Hostinger KVM2</div>
+        </div>
+        <div class="card-desc">Servidor principal donde vive todo el sistema. Brasil = baja latencia LATAM. $6.99/mes.</div>
         <ul class="card-uses">
-          <li>Despliegue de servicios (n8n)</li>
-          <li>Procesos automatizados</li>
+          <li>Correr Docker + n8n</li>
+          <li>Alojar automatizaciones</li>
+          <li>Self-hosted sin límites</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-pending">⏳ Comprar ya</span>
+          <span class="cost-tag">$6.99/mes</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">Docker</div>
+        </div>
+        <div class="card-desc">Ejecuta n8n y otros servicios en contenedores aislados dentro del VPS.</div>
+        <ul class="card-uses">
+          <li>Despliegue de n8n</li>
+          <li>Aislamiento de servicios</li>
         </ul>
         <div class="card-meta">
           <span class="badge badge-person">👤 Daniel</span>
+          <span class="cost-tag">$0</span>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-name">VPS · Hostinger</div>
-        <div class="card-desc">Servidor donde se alojará el sistema.</div>
+        <div class="card-header">
+          <div class="card-name">Dominio</div>
+        </div>
+        <div class="card-desc">Dirección web del sistema para acceder a n8n y endpoints de webhooks.</div>
         <ul class="card-uses">
-          <li>Correr Docker</li>
-          <li>Alojar automatizaciones</li>
-        </ul>
-        <div class="card-meta">
-          <span class="badge badge-pending">⏳ Pendiente</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-name">Servidor</div>
-        <div class="card-desc">Infraestructura central del sistema.</div>
-        <div class="card-meta">
-          <span class="badge badge-tbd">⬡ Por definir</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-name">Dominio</div>
-        <div class="card-desc">Dirección web del sistema.</div>
-        <ul class="card-uses">
-          <li>Acceso a servicios</li>
-          <li>Endpoints</li>
+          <li>Acceso a n8n</li>
+          <li>URLs de webhooks</li>
         </ul>
         <div class="card-meta">
           <span class="badge badge-pending">⏳ Pendiente</span>
@@ -351,122 +461,352 @@
       <span class="section-title">Automatización</span>
       <span class="section-num">02</span>
     </div>
+    <p class="section-desc">Motor de ejecución y constructor inteligente. n8n corre los flujos — Claude Code los crea.</p>
     <div class="cards">
 
       <div class="card">
-        <div class="card-name">n8n</div>
-        <div class="card-desc">Herramienta principal para automatizar procesos.</div>
+        <div class="card-header">
+          <div class="card-name">n8n</div>
+        </div>
+        <div class="card-desc">Motor central que ejecuta todos los flujos de automatización. Self-hosted en Hostinger.</div>
         <ul class="card-uses">
-          <li>Flujos de ventas</li>
-          <li>Integraciones</li>
+          <li>Flujos de ventas y cotización</li>
+          <li>Integraciones entre herramientas</li>
           <li>Procesamiento de datos</li>
+          <li>Webhooks y triggers</li>
         </ul>
+        <div class="card-meta">
+          <span class="badge badge-person">👤 Daniel</span>
+          <span class="cost-tag">$0 (self-hosted)</span>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="card-name">APIs IA</div>
-        <div class="card-desc">Servicios de inteligencia artificial: Claude · Gemini.</div>
+      <div class="card card-new">
+        <div class="card-header">
+          <div class="card-name">Claude Code + MCP</div>
+          <span class="new-pill">nuevo</span>
+        </div>
+        <div class="card-desc">Constructor inteligente de flujos n8n. Describes en lenguaje natural y Claude crea el workflow automáticamente via MCP.</div>
         <ul class="card-uses">
-          <li>Generación de respuestas</li>
-          <li>Análisis de clientes</li>
+          <li>Crear flujos sin tocar nodos</li>
+          <li>Adaptar templates existentes</li>
+          <li>Acelerar replicación por negocio</li>
         </ul>
+        <div class="mcp-box">
+          <strong>¿Qué es MCP?</strong> Model Context Protocol — un puente que permite a Claude operar herramientas externas directamente. Es como una API, pero Claude decide cuándo y cómo usarla sin que tú escribas el código de conexión.
+        </div>
+        <div class="card-meta">
+          <span class="badge badge-new">⬡ Agregar Fase 1</span>
+          <span class="cost-tag">Claude Pro $20/mes</span>
+        </div>
+      </div>
+
+      <div class="card card-new">
+        <div class="card-header">
+          <div class="card-name">awesome-n8n-templates</div>
+          <span class="new-pill">nuevo</span>
+        </div>
+        <div class="card-desc">Repositorio público con miles de flujos n8n listos para cotización, CRM, WhatsApp y más.</div>
+        <ul class="card-uses">
+          <li>Templates de cotización</li>
+          <li>Flujos de CRM</li>
+          <li>Integraciones WhatsApp</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-active">✓ Usar desde ya</span>
+          <span class="cost-tag">$0</span>
+        </div>
       </div>
 
       <div class="card">
-        <div class="card-name">Webhooks</div>
-        <div class="card-desc">Recepción de eventos en tiempo real.</div>
+        <div class="card-header">
+          <div class="card-name">Webhooks</div>
+        </div>
+        <div class="card-desc">Recepción de eventos en tiempo real. Son el pegamento entre Pancake y n8n.</div>
         <ul class="card-uses">
           <li>Conexión entre herramientas</li>
           <li>Activación de automatizaciones</li>
         </ul>
+        <div class="card-meta">
+          <span class="badge badge-person">👤 Daniel</span>
+        </div>
       </div>
 
     </div>
   </div>
 
-  <!-- 3. Ventas / Operación -->
+  <!-- 3. Inteligencia Artificial -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
+      <span class="section-title">Inteligencia Artificial</span>
+      <span class="section-num">03</span>
+    </div>
+    <p class="section-desc">Cerebro del sistema. Califica leads, genera cotizaciones y responde en lenguaje natural.</p>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">Claude API</div>
+        </div>
+        <div class="card-desc">IA principal del sistema. Integrada en n8n via HTTP Request para cotizaciones, calificación de leads y respuestas automáticas.</div>
+        <ul class="card-uses">
+          <li>Generación de cotizaciones</li>
+          <li>Calificación de leads</li>
+          <li>Respuestas personalizadas</li>
+          <li>Personalización de prospectos</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-pending">⏳ Setup sem. 2</span>
+          <span class="cost-tag">~$20–50/mes</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 4. Ventas / Operación -->
   <div class="section">
     <div class="section-header">
       <div class="section-icon">💰</div>
       <span class="section-title">Ventas / Operación</span>
-      <span class="section-num">03</span>
+      <span class="section-num">04</span>
     </div>
+    <p class="section-desc">Canales de comunicación y operación comercial.</p>
     <div class="cards">
 
       <div class="card">
-        <div class="card-name">Pancake</div>
-        <div class="card-desc">Gestión de mensajes y leads.</div>
+        <div class="card-header">
+          <div class="card-name">Pancake.lat</div>
+        </div>
+        <div class="card-desc">Centraliza Instagram + Facebook + WhatsApp en un solo lugar. Socio oficial Meta para LATAM. Dispara webhooks a n8n.</div>
+        <ul class="card-uses">
+          <li>Gestión de DMs y comentarios</li>
+          <li>Trigger por palabras clave</li>
+          <li>Conexión con n8n via webhook</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-pending">⏳ Comprar ya</span>
+          <span class="cost-tag">$30+/mes</span>
+        </div>
+      </div>
+
+      <div class="card card-new">
+        <div class="card-header">
+          <div class="card-name">WATI</div>
+          <span class="new-pill">nuevo</span>
+        </div>
+        <div class="card-desc">WhatsApp Business API oficial de Meta. Reemplaza el chatbot actual (solo Android). Compatible con iOS y Android.</div>
+        <ul class="card-uses">
+          <li>Canal WA oficial (iOS + Android)</li>
+          <li>Envío de mensajes automáticos</li>
+          <li>Integración con n8n</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-pending">⏳ Setup sem. 2</span>
+          <span class="cost-tag">$49+/mes</span>
+        </div>
       </div>
 
       <div class="card">
-        <div class="card-name">Shopify</div>
-        <div class="card-desc">Plataforma de e-commerce.</div>
+        <div class="card-header">
+          <div class="card-name">Shopify</div>
+        </div>
+        <div class="card-desc">Plataforma de e-commerce para negocios que lo requieran (ej. Smart Shoes).</div>
+        <ul class="card-uses">
+          <li>Tienda online</li>
+          <li>Gestión de pedidos</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-future">◈ Fase futura</span>
+          <span class="cost-tag">$29–79/mes</span>
+        </div>
       </div>
 
       <div class="card">
-        <div class="card-name">Wompi</div>
-        <div class="card-desc">Procesamiento de pagos.</div>
-      </div>
-
-      <div class="card">
-        <div class="card-name">WhatsApp Business</div>
-        <div class="card-desc">Canal principal de comunicación con clientes.</div>
+        <div class="card-header">
+          <div class="card-name">Wompi</div>
+        </div>
+        <div class="card-desc">Pasarela de pagos para Colombia. PSE, Nequi, tarjeta de crédito.</div>
+        <ul class="card-uses">
+          <li>Cobros online Colombia</li>
+          <li>PSE · Nequi · Tarjeta</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-future">◈ Fase futura</span>
+          <span class="cost-tag">% por transacción</span>
+        </div>
       </div>
 
     </div>
   </div>
 
-  <!-- 4. Desarrollo -->
+  <!-- 5. Desarrollo -->
   <div class="section">
     <div class="section-header">
       <div class="section-icon">💻</div>
       <span class="section-title">Desarrollo</span>
-      <span class="section-num">04</span>
+      <span class="section-num">05</span>
     </div>
+    <p class="section-desc">Control de versiones, documentación y repositorios del proyecto.</p>
     <div class="cards">
 
       <div class="card">
-        <div class="card-name">GitHub</div>
-        <div class="card-desc">Gestión de código y documentación.</div>
+        <div class="card-header">
+          <div class="card-name">GitHub · automation-docs</div>
+        </div>
+        <div class="card-desc">Repositorio de documentación estratégica, flujos de negocio y decisiones técnicas. Ya activo.</div>
+        <ul class="card-uses">
+          <li>Documentación del proyecto</li>
+          <li>Flujos AS-IS y TO-BE</li>
+          <li>Decisiones técnicas</li>
+          <li>Stack y arquitectura</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-active">✓ Activo</span>
+          <span class="cost-tag">$0</span>
+        </div>
       </div>
 
       <div class="card">
-        <div class="card-name">Vercel</div>
-        <div class="card-desc">Despliegue de aplicaciones web.</div>
+        <div class="card-header">
+          <div class="card-name">GitHub · automation-core</div>
+        </div>
+        <div class="card-desc">Repositorio de implementación técnica: workflows de n8n exportados como JSON, prompts de Claude y scripts reutilizables.</div>
+        <ul class="card-uses">
+          <li>Workflows n8n (JSON)</li>
+          <li>Prompts de Claude API</li>
+          <li>Templates y configs</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-pending">⏳ Crear Fase 2</span>
+          <span class="cost-tag">$0</span>
+        </div>
       </div>
 
       <div class="card">
-        <div class="card-name">Sentry</div>
-        <div class="card-desc">Monitoreo de errores.</div>
+        <div class="card-header">
+          <div class="card-name">Vercel</div>
+        </div>
+        <div class="card-desc">Despliegue de apps web. Útil si se construye un dashboard personalizado de KPIs en el futuro.</div>
+        <ul class="card-uses">
+          <li>Dashboard web de KPIs</li>
+          <li>Landing pages</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-future">◈ Fase futura</span>
+          <span class="cost-tag">$0 plan free</span>
+        </div>
       </div>
 
     </div>
   </div>
 
-  <!-- 5. Data -->
+  <!-- 6. Data -->
   <div class="section">
     <div class="section-header">
       <div class="section-icon">📊</div>
       <span class="section-title">Data</span>
-      <span class="section-num">05</span>
+      <span class="section-num">06</span>
     </div>
+    <p class="section-desc">Fuentes de verdad del negocio. Google Sheets es el CRM inicial — migrar solo si supera 5.000 registros.</p>
     <div class="cards">
 
       <div class="card">
-        <div class="card-name">Google Sheets</div>
-        <div class="card-desc">Base de datos inicial.</div>
+        <div class="card-header">
+          <div class="card-name">Google Sheets</div>
+        </div>
+        <div class="card-desc">CRM inicial, registro de pedidos, comisiones y dashboard de KPIs. Integración nativa con n8n. Acceso desde cualquier dispositivo.</div>
+        <ul class="card-uses">
+          <li>CRM de leads</li>
+          <li>Registro de pedidos</li>
+          <li>Cálculo de comisiones</li>
+          <li>Dashboard KPIs</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-active">✓ Activo</span>
+          <span class="cost-tag">$0</span>
+        </div>
       </div>
 
       <div class="card">
-        <div class="card-name">Airtable</div>
-        <div class="card-desc">Base de datos avanzada.</div>
+        <div class="card-header">
+          <div class="card-name">Airtable</div>
+        </div>
+        <div class="card-desc">Base de datos avanzada. Migrar desde Google Sheets solo si el volumen supera 5.000 registros.</div>
+        <ul class="card-uses">
+          <li>Base de datos escalable</li>
+          <li>Vistas avanzadas</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-future">◈ Fase 6+</span>
+        </div>
       </div>
 
     </div>
   </div>
 
+  <!-- 7. Fases futuras -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🚀</div>
+      <span class="section-title">Fases futuras</span>
+      <span class="section-num">07</span>
+    </div>
+    <p class="section-desc">Herramientas que entran en fases 5 en adelante, una vez el piloto esté consolidado.</p>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">Retell AI</div>
+        </div>
+        <div class="card-desc">Agentes de voz con IA para llamadas salientes de prospectación B2B. All-inclusive: LLM + voz + telefonía.</div>
+        <ul class="card-uses">
+          <li>Llamadas B2B automatizadas</li>
+          <li>Calificación por voz</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-future">◈ Fase 9+</span>
+          <span class="cost-tag">$0.07/min</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">Instantly.ai</div>
+        </div>
+        <div class="card-desc">Email frío masivo con personalización IA y calentamiento automático de dominio.</div>
+        <ul class="card-uses">
+          <li>Prospectación por email</li>
+          <li>Calentamiento de dominio</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-future">◈ Fase 5</span>
+          <span class="cost-tag">$37/mes</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">Scraping tool</div>
+        </div>
+        <div class="card-desc">Robot de prospectación automática. Extrae empresas por sector desde Cámara de Comercio, Páginas Amarillas y LinkedIn.</div>
+        <ul class="card-uses">
+          <li>Prospectación automática</li>
+          <li>Base de datos de empresas</li>
+        </ul>
+        <div class="card-meta">
+          <span class="badge badge-future">◈ Fase 5</span>
+          <span class="cost-tag">$0–20/mes</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
   <div class="footer-note">
-    🔐 Todas las credenciales sensibles se almacenan exclusivamente en <strong style="color:var(--accent2);margin:0 4px;">Bitwarden</strong>. Nunca compartir contraseñas en este documento.
+    🔐 Todas las credenciales sensibles se almacenan exclusivamente en <strong style="color:var(--accent2);margin:0 4px;">Bitwarden</strong>. Nunca compartir contraseñas en este documento ni en el repositorio de GitHub.
   </div>
 
 </div>
