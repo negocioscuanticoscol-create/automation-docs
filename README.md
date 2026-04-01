@@ -20,7 +20,7 @@ To build a system that automates:
 
 ## Project Structure
 
-- tools/ → tools and platforms used in the system
+- tools/ → tools and platforms used in the system (https://negocioscuanticoscol-create.github.io/automation-docs/tools/guiaHerramientas.html)
 - project/ → planning, phases, and timeline
 - flows/ → system workflows and automation logic
 - clientes/negocios_cuanticos/ → client-specific documentation
